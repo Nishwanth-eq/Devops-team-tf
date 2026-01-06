@@ -39,4 +39,5 @@ module "user" {
 
   devops_group_name = module.group.devops_group_name
   switch_role_arn   = module.role.devops_team_switch_role_arn
+  usernames = var.usernames
 }
