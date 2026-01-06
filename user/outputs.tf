@@ -7,3 +7,12 @@ output "user_arns" {
   description = "ARNs of created IAM users"
   value       = [for u in aws_iam_user.users : u.arn]
 }
+
+output "console_passwords" {
+  description = "Initial console passwords for IAM users (use once; user must change at first login)"
+  value = {
+    for k, u in aws_iam_user.users :
+    k => random_password.user_password[k].result
+  }
+  sensitive = true
+}
