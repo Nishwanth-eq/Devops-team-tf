@@ -64,3 +64,5 @@ resource "null_resource" "create_login_profile" {
 
   depends_on = [aws_iam_user.users]
 }
+
+data "aws_caller_identity" "current" {}
